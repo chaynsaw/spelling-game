@@ -27,7 +27,7 @@ function drawLetters() {
     letters[str] = {
       point: {
         x: xOffSet + 10,
-        y: yOffSet - 10,
+        y: yOffSet + 50,
       },
     };
     xOffSet += 30;
