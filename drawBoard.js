@@ -3,9 +3,9 @@ const drawBoard = () => {
   const ctx = canvas.getContext("2d");
   
   let y = 40;
-  
+
   setInterval(() => {
-    ctx.clearRect(0, 0, canvas.clientWidth, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     if (y < canvas.height) {
       y += 10;
     } else {
