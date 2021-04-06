@@ -53,7 +53,7 @@ const drawLetters = () => {
       letterContainerHeight
     );
 
-    const isValidLetter = letterValidation(letter.toLowerCase());
+    const isValidLetter = isValidWordBankLetter(letter.toLowerCase());
 
     if (isValidLetter) {
       drawLetter(letter, letterX, letterY, "green");
