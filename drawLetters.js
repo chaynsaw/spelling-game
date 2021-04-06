@@ -69,7 +69,8 @@ function drawLetters() {
 
   function drawLetter(letter, letterX, letterY, strokeColor) {
     ctx.fillStyle = strokeColor;
-    ctx.fillText(letter, letterX, letterY);
+    letter === "A" ? letterXOffset = letterX  + 3: letterXOffset = letterX + 13;
+    ctx.fillText(letter, letterXOffset, letterY);
     ctx.strokeStyle = strokeColor;
     ctx.strokeRect(
       letterX + ctx.lineWidth / 2,
@@ -77,5 +78,7 @@ function drawLetters() {
       letterContainerWidth,
       letterContainerHeight
     );
+    ctx.textAlign = "center";
+
   }
 }
