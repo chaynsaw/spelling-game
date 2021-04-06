@@ -5,29 +5,23 @@ function drawLetters() {
 
   ctx.font = "30px Arial";
 
-  var i = 65;
-  var j = 91;
-
-  var xOffSet = canvas.offsetLeft;
-  var yOffSet = canvas.offsetTop + 20;
+  var i = 65; // ASCII code for "A"
+  var j = 91; // ASCII code for "Z"
+  var letterContainerWidth = 25;
+  var letterContainerHeight = 22;
+  var rect = canvas.getBoundingClientRect();
+  var xOffSet = 12;
+  var yOffSet = 35;
   var letters = new Object();
-  /* Example:
-  letters = {
-     "A":
-       "point": {
-         "x": 40,
-         "y": 40
-       }
-  }
-  */
 
   for (k = i; k < j; k++) {
-    var str = String.fromCharCode(k);
-    ctx.fillText(str, xOffSet, yOffSet);
-    letters[str] = {
+    var letter = String.fromCharCode(k);
+    drawLetter(letter, xOffSet, yOffSet, "black");
+
+    letters[letter] = {
       point: {
-        x: xOffSet + 10,
-        y: yOffSet + 50,
+        x: xOffSet,
+        y: yOffSet,
       },
     };
     xOffSet += 30;
@@ -36,21 +30,52 @@ function drawLetters() {
   //onclick handler
   for (const letter in letters) {
     canvas.addEventListener("click", function (e) {
-      handleOnClick(e, letter);
+      e.preventDefault();
+      var clickedX = e.clientX - rect.x;
+      var clickedY = e.clientY - rect.y;
+      handleOnClick(clickedX, clickedY, letter);
     });
   }
 
-  function handleOnClick(e, letter) {
-    e.preventDefault();
-    var x = letters[letter].point.x;
-    var y = letters[letter].point.y;
+  function handleOnClick(clickedX, clickedY, letter) {
+    var letterX = letters[letter].point.x;
+    var letterY = letters[letter].point.y;
+
     if (
-      e.clientX <= x + 10 &&
-      e.clientX >= x - 10 &&
-      e.clientY <= y + 10 &&
-      e.clientY >= y - 10
+      // return if out of bounds
+      clickedX < letterX ||
+      clickedX > letterX + letterContainerWidth ||
+      clickedY > letterY ||
+      clickedY < letterY - letterContainerHeight
     ) {
-      letterValidation(letter.toLowerCase());
+      return;
     }
+    // clear existing letter
+    ctx.clearRect(
+      letterX + ctx.lineWidth / 2,
+      letterY - letterContainerHeight + ctx.lineWidth / 2,
+      letterContainerWidth,
+      letterContainerHeight
+    );
+
+    var isValidLetter = letterValidation(letter.toLowerCase());
+
+    if (isValidLetter) {
+      drawLetter(letter, letterX, letterY, "green");
+    } else {
+      drawLetter(letter, letterX, letterY, "red");
+    }
+  }
+
+  function drawLetter(letter, letterX, letterY, strokeColor) {
+    ctx.fillStyle = strokeColor;
+    ctx.fillText(letter, letterX, letterY);
+    ctx.strokeStyle = strokeColor;
+    ctx.strokeRect(
+      letterX + ctx.lineWidth / 2,
+      letterY - letterContainerHeight + ctx.lineWidth / 2,
+      letterContainerWidth,
+      letterContainerHeight
+    );
   }
 }
