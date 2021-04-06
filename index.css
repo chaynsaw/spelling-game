@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  padding: 0;
+  box-sizing: border-box;
+  margin: auto;
+  max-width: max-content;
+}
+
+canvas {
+  border: 1px solid #000;
+  display: inline-block;
+}
