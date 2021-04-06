@@ -37,10 +37,14 @@ const isValidWordBankLetter = (letter) => {
 const handleSubmit = (e) => {
   e.preventDefault();
   currentWord = e.target.word.value;
+  currentWordIndex = 0;
   wordBank.unshift(currentWord);
   renderWord();
 };
 
 renderWord();
 
-document.getElementById("add-word").addEventListener("submit", handleSubmit);
+document.getElementById("add-word").addEventListener("submit", (e) => {
+  handleSubmit(e);
+  resetBoard();
+});
