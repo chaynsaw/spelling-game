@@ -1,15 +1,16 @@
 "use strict";
 
 const wordBank = ["abcdefghijklmnopqrstuvwxyz", "dad", "brother"];
-
 const mySection = document.getElementById("word-bank");
 let currentWord = wordBank[0]; // test for whole alphabet
-let currentWordWithSpan = "";
-for (let i in currentWord) {
-  currentWordWithSpan += `<span id="${i}">${currentWord[i]}</span>`;
-}
 
-mySection.innerHTML = currentWordWithSpan;
+const renderWord = () => {
+  let currentWordWithSpan = "";
+  for (let i in currentWord) {
+    currentWordWithSpan += `<span id="${i}">${currentWord[i]}</span>`;
+  }
+  mySection.innerHTML = currentWordWithSpan;
+};
 
 const isValidWordBankLetter = (letter) => {
   for (let i in currentWord) {
@@ -21,4 +22,13 @@ const isValidWordBankLetter = (letter) => {
   return false;
 };
 
-// letterValidation('o'); // use this in the event handler
+const handleSubmit = (e) => {
+  e.preventDefault();
+  currentWord = e.target.word.value;
+  wordBank.unshift(currentWord);
+  renderWord();
+};
+
+renderWord();
+
+document.getElementById("add-word").addEventListener("submit", handleSubmit);
