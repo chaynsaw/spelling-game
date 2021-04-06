@@ -4,14 +4,19 @@ const drawBoard = () => {
   
   let y = 40;
 
-  setInterval(() => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    if (y < canvas.height) {
-      y += 10;
-    } else {
-      y = 40;
+  const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (y < canvas.height) {
+        y += 1;
+      } else {
+        y = 40;
+      }
+      drawLetters(12, y)
+      console.log(y);
+      window.requestAnimationFrame(draw)
     }
-    drawLetters(12, y)
-  }, 500);
 
-};
+  window.requestAnimationFrame(draw);
+  
+
+}
