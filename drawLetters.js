@@ -1,4 +1,7 @@
-const drawLetters = () => {
+const drawLetters = (xOffSet, yOffSet) => {
+  // xOffSet = 12; // initialize left padding
+  // yOffSet = 40; // initialize top padding
+  
   const canvas = document.getElementById("board");
   /** @type {CanvasRenderingContext2D} */
   const ctx = canvas.getContext("2d");
@@ -10,8 +13,6 @@ const drawLetters = () => {
   const letterContainerHeight = 22;
   const letterContainerSpace = 30; // space between letter containers
   const rect = canvas.getBoundingClientRect();
-  let xOffSet = 12; // initialize left padding
-  const yOffSet = 35; // initialize top padding
   const letters = new Object(); // storage of x,y coordinates for each letter
 
   // HELPER METHODS
