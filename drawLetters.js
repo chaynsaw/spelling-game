@@ -50,7 +50,7 @@ function drawLetters() {
       e.clientY <= y + 10 &&
       e.clientY >= y - 10
     ) {
-      alert(`${letter} Clicked`);
+      letterValidation(letter.toLowerCase());
     }
   }
 }
