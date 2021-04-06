@@ -2,9 +2,9 @@
 
 const wordBank = ["abcdefghijklmnopqrstuvwxyz", "dad", "brother"];
 const mySection = document.getElementById("word-bank");
+let currentWord = wordBank[0]; // test for whole alphabet
 
 const renderWord = () => {
-  let currentWord = wordBank[0]; // test for whole alphabet
   let currentWordWithSpan = "";
   for (let i in currentWord) {
     currentWordWithSpan += `<span id="${i}">${currentWord[i]}</span>`;
@@ -13,7 +13,6 @@ const renderWord = () => {
 };
 
 const isValidWordBankLetter = (letter) => {
-  let currentWord = wordBank[0];
   for (let i in currentWord) {
     if (currentWord[i] === letter) {
       document.getElementById(`${i}`).style.color = "green";
@@ -25,7 +24,8 @@ const isValidWordBankLetter = (letter) => {
 
 const handleSubmit = (e) => {
   e.preventDefault();
-  wordBank.unshift(e.target.word.value);
+  currentWord = e.target.word.value;
+  wordBank.unshift(currentWord);
   renderWord();
 };
 
