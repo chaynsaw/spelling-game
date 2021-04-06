@@ -1,3 +1,3 @@
-function drawBoard() {
+const drawBoard = () => {
   drawLetters();
-}
+};

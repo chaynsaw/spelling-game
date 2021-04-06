@@ -11,7 +11,7 @@ for (let i in currentWord) {
 
 mySection.innerHTML = currentWordWithSpan;
 
-const letterValidation = (letter) => {
+const isValidWordBankLetter = (letter) => {
   for (let i in currentWord) {
     if (currentWord[i] === letter) {
       document.getElementById(`${i}`).style.color = "green";
