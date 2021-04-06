@@ -32,5 +32,3 @@ const handleSubmit = (e) => {
 renderWord();
 
 document.getElementById("add-word").addEventListener("submit", handleSubmit);
-
-// letterValidation('o'); // use this in the event handler
