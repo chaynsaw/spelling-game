@@ -82,6 +82,7 @@ const drawLetters = () => {
   for (const letter in letters) {
     canvas.addEventListener("click", (e) => {
       e.preventDefault();
+      if (isFinishedSpelling()) return;
       const clickedX = e.clientX - rect.x;
       const clickedY = e.clientY - rect.y;
       handleOnClick(clickedX, clickedY, letter);

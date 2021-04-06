@@ -3,6 +3,7 @@
 const wordBank = ["abcdefghijklmnopqrstuvwxyz", "dad", "brother"];
 const mySection = document.getElementById("word-bank");
 let currentWord = wordBank[0]; // test for whole alphabet
+let currentWordIndex = 0;
 
 const renderWord = () => {
   let currentWordWithSpan = "";
@@ -12,13 +13,24 @@ const renderWord = () => {
   mySection.innerHTML = currentWordWithSpan;
 };
 
+const isFinishedSpelling = () => {
+  return currentWordIndex === currentWord.length;
+};
+
 const isValidWordBankLetter = (letter) => {
-  for (let i in currentWord) {
-    if (currentWord[i] === letter) {
-      document.getElementById(`${i}`).style.color = "green";
-      return true;
-    }
+  // check if clicked letter matches correct letter by index
+  if (currentWord[currentWordIndex] === letter) {
+    document.getElementById(`${currentWordIndex}`).style.color = "green";
+    // increment index after validating correct letter
+    currentWordIndex += 1;
+    return true;
   }
+  // handle edge case where all letters have been spelled correctly and
+  // user clicks letter that has already passed validation
+  if (isFinishedSpelling() && currentWord.includes(letter)) {
+    return true;
+  }
+
   return false;
 };
 
