@@ -8,6 +8,7 @@ const drawLetters = () => {
   const asciiZ = 91; // ASCII code for "Z" (max range)
   const letterContainerWidth = 25;
   const letterContainerHeight = 22;
+  const letterContainerSpace = 30; // space between letter containers
   const rect = canvas.getBoundingClientRect();
   let xOffSet = 12; // initialize left padding
   const yOffSet = 35; // initialize top padding
@@ -69,8 +70,8 @@ const drawLetters = () => {
         y: yOffSet,
       },
     };
-    // next letter placement +30 on x-axis to display letters in a row
-    xOffSet += 30;
+    // next letter placement +letterContainerSpace on x-axis to display letters in a row
+    xOffSet += letterContainerSpace;
   }
 
   // onclick handler
