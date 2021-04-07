@@ -25,7 +25,10 @@ const isFinishedSpelling = () => {
 
 const isValidWordBankLetter = (letter) => {
   // check if clicked letter matches correct letter by index
-  if (currentWord[currentWordIndex].toLowerCase() === letter) {
+  if (
+    currentWord[currentWordIndex] &&
+    currentWord[currentWordIndex].toLowerCase() === letter
+  ) {
     document.getElementById(`${currentWordIndex}`).style.backgroundColor =
       "azure";
     // increment index after validating correct letter
