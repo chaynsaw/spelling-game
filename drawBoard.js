@@ -60,6 +60,7 @@ const drawBoard = () => {
 
   canvas.addEventListener("click", (e) => {
     e.preventDefault();
+    if (isFinishedSpelling()) return;
     const clickedX = e.clientX - rect.x;
     const clickedY = e.clientY - rect.y;
     letters.forEach((letter) => {
