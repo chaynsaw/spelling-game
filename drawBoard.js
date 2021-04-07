@@ -6,18 +6,12 @@ class Letter {
     this.color = color;
   }
 }
-const letters = [];
-
-const resetLetters = () => {
-  letters.forEach((letter) => {
-    letter.color = "black";
-  });
-};
 
 const drawBoard = () => {
   const canvas = document.getElementById("board");
   const ctx = canvas.getContext("2d");
   const rect = canvas.getBoundingClientRect();
+  const letters = [];
 
   const asciiA = 65; // ASCII code for "A" (min range)
   const asciiZ = 91; // ASCII code for "Z" (max range)
@@ -53,6 +47,12 @@ const drawBoard = () => {
     window.requestAnimationFrame(draw);
   };
   draw();
+
+  const resetLetters = () => {
+    letters.forEach((letter) => {
+      letter.color = "black";
+    });
+  };
 
   const handleOnClick = (clickedX, clickedY, letter) => {
     if (
