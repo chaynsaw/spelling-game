@@ -71,11 +71,14 @@ const drawBoard = () => {
 
   canvas.addEventListener("click", (e) => {
     e.preventDefault();
-    if (isFinishedSpelling()) return;
     const clickedX = e.clientX - rect.x;
     const clickedY = e.clientY - rect.y + window.scrollY;
     letters.forEach((letter) => {
       handleOnClick(clickedX, clickedY, letter);
     });
+    if (isFinishedSpelling()) {
+      document.getElementById("success-message").style.display = "block";
+      return;
+    }
   });
 };

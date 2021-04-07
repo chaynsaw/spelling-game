@@ -8,7 +8,7 @@ main {
   padding: 0;
   box-sizing: border-box;
   margin: auto;
-  max-width: max-content;
+  width: 802px;
 }
 
 canvas {
@@ -22,9 +22,11 @@ main form {
   text-align: center;
 }
 
+main form input {
+  padding: 5px;
+}
+
 #word-picker {
-  /* display: flex;
-  justify-content: space-between; */
   max-width: 100%;
   margin-bottom: 20px;
   border: 1px solid black;
@@ -50,5 +52,29 @@ main form {
 
 #word-picker p {
   margin-top: 10px;
-  margin-left: 10px;
+  margin-left: 18px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#success-message {
+  display: none;
+  text-align: center;
+  margin-top: 10px;
+}
+
+#success-message p {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#success-message button {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#success-message button:hover {
+  cursor: pointer;
+  transition-duration: 500px;
+  background-color: aquamarine;
 }
