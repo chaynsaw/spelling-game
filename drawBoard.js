@@ -12,8 +12,7 @@ const drawBoard = () => {
       y = 40;
     }
     drawLetters(12, y);
-    console.log(y);
     window.requestAnimationFrame(draw);
   };
-  window.requestAnimationFrame(draw);
+  draw();
 };
