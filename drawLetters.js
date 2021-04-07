@@ -1,7 +1,7 @@
 const drawLetters = (xOffSet, yOffSet) => {
   // xOffSet = 12; // initialize left padding
   // yOffSet = 40; // initialize top padding
-  
+
   const canvas = document.getElementById("board");
   /** @type {CanvasRenderingContext2D} */
   const ctx = canvas.getContext("2d");
@@ -18,9 +18,7 @@ const drawLetters = (xOffSet, yOffSet) => {
   // HELPER METHODS
   const drawLetter = (letter, letterX, letterY, strokeColor) => {
     ctx.fillStyle = strokeColor;
-    letter === "A"
-      ? (letterXOffset = letterX + 3)
-      : (letterXOffset = letterX + 13);
+    letterXOffset = letterX + 13;
     ctx.fillText(letter, letterXOffset, letterY);
     ctx.strokeStyle = strokeColor;
     ctx.strokeRect(
