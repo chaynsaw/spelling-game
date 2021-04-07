@@ -34,7 +34,7 @@ const drawBoard = () => {
   const draw = () => {
     letters.forEach((letter) => {
       // random fall speed between 1-3 inclusive
-      const ySpeed = Math.floor(Math.random() * 3) + 1;
+      const ySpeed = Math.random() * 1.5 + 0.1;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       letter.y += ySpeed;
 
@@ -48,6 +48,12 @@ const drawBoard = () => {
   };
   draw();
 
+  const resetLetters = () => {
+    letters.forEach((letter) => {
+      letter.color = "black";
+    });
+  };
+
   const handleOnClick = (clickedX, clickedY, letter) => {
     if (
       // return if out of bounds
@@ -59,6 +65,7 @@ const drawBoard = () => {
       return;
     }
     const isValidLetter = isValidWordBankLetter(letter.name.toLowerCase());
+    resetLetters();
     letter.color = isValidLetter ? "green" : "red";
   };
 
