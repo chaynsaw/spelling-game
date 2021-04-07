@@ -7,7 +7,9 @@ let currentWordIndex = 0;
 const renderWord = () => {
   let currentWordWithSpan = "";
   for (let i in currentWord) {
-    currentWordWithSpan += `<span id="${i}">${currentWord[i]}</span>`;
+    currentWordWithSpan += `<span id="${i}">${currentWord[
+      i
+    ].toUpperCase()}</span>`;
   }
   mySection.innerHTML = currentWordWithSpan;
 };
@@ -18,7 +20,7 @@ const isFinishedSpelling = () => {
 
 const isValidWordBankLetter = (letter) => {
   // check if clicked letter matches correct letter by index
-  if (currentWord[currentWordIndex] === letter) {
+  if (currentWord[currentWordIndex].toLowerCase() === letter) {
     document.getElementById(`${currentWordIndex}`).style.color = "green";
     // increment index after validating correct letter
     currentWordIndex += 1;

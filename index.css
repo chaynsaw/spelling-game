@@ -8,7 +8,7 @@ main {
   padding: 0;
   box-sizing: border-box;
   margin: auto;
-  max-width: max-content;
+  width: 800px;
 }
 
 canvas {
@@ -23,8 +23,6 @@ main form {
 }
 
 #word-picker {
-  /* display: flex;
-  justify-content: space-between; */
   max-width: 100%;
   margin-bottom: 20px;
   border: 1px solid black;
@@ -46,5 +44,7 @@ main form {
 
 #word-picker p {
   margin-top: 10px;
-  margin-left: 10px;
+  margin-left: 18px;
+  font-size: 28px;
+  font-weight: bold;
 }
