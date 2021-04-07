@@ -2,7 +2,6 @@
 
 const wordBank = ["abcdefghijklmnopqrstuvwxyz", "dad", "brother"];
 const mySection = document.getElementById("word-bank");
-let currentWord = wordBank[0]; // test for whole alphabet
 let currentWordIndex = 0;
 
 const renderWord = () => {
@@ -40,9 +39,44 @@ const handleSubmit = (e) => {
   currentWordIndex = 0;
   wordBank.unshift(currentWord);
   renderWord();
+  renderNewButton(currentWord);
+  e.target.reset();
 };
 
+const displayWord = (e) => {
+  currentWord = e.target.textContent;
+  renderWord();
+};
+
+const generateRandomIndex = () => Math.floor(Math.random() * wordBank.length);
+
+const generateMessage = () => {
+  const wordBankSection = document.getElementById("word-bank");
+  const p = document.createElement("p");
+  p.textContent = "Congratulations!";
+  wordBankSection.appendChild(p);
+};
+
+const renderNewButton = (word) => {
+  const button = document.createElement("button");
+  button.addEventListener("click", displayWord);
+  button.textContent = word;
+  wordPickerSection.appendChild(button);
+};
+
+const renderWordPicker = () => {
+  const p = document.createElement("p");
+  p.textContent = "Pick a word: ";
+  wordPickerSection.appendChild(p);
+  for (let word of wordBank) {
+    renderNewButton(word);
+  }
+};
+
+const wordPickerSection = document.getElementById("word-picker");
+let currentWord = wordBank[generateRandomIndex()]; // randomly pick a word from word bank
 renderWord();
+renderWordPicker();
 
 document.getElementById("add-word").addEventListener("submit", (e) => {
   handleSubmit(e);
