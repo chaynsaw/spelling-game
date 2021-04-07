@@ -46,6 +46,7 @@ const isValidWordBankLetter = (letter) => {
 
 const handleSubmit = (e) => {
   e.preventDefault();
+  removeActiveClasses();
   currentWord = e.target.word.value;
   wordBank.unshift(currentWord);
   renderWord();
