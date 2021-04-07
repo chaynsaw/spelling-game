@@ -67,7 +67,6 @@ const handleNextWord = () => {
     nextWord = wordBank[generateRandomIndex()];
   }
   currentWord = nextWord;
-  console.log(currentWord);
   renderWord();
   reset();
 };
