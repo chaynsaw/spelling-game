@@ -4,6 +4,11 @@ const wordBank = ["abcdefghijklmnopqrstuvwxyz", "dad", "brother"];
 const mySection = document.getElementById("word-bank");
 let currentWordIndex = 0;
 
+const reset = () => {
+  currentWordIndex = 0;
+  resetBoard();
+};
+
 const renderWord = () => {
   let currentWordWithSpan = "";
   for (let i in currentWord) {
@@ -38,7 +43,6 @@ const isValidWordBankLetter = (letter) => {
 const handleSubmit = (e) => {
   e.preventDefault();
   currentWord = e.target.word.value;
-  currentWordIndex = 0;
   wordBank.unshift(currentWord);
   renderWord();
   renderNewButton(currentWord);
@@ -61,7 +65,10 @@ const generateMessage = () => {
 
 const renderNewButton = (word) => {
   const button = document.createElement("button");
-  button.addEventListener("click", displayWord);
+  button.addEventListener("click", (e) => {
+    displayWord(e);
+    reset();
+  });
   button.textContent = word;
   wordPickerSection.appendChild(button);
 };
@@ -82,5 +89,5 @@ renderWordPicker();
 
 document.getElementById("add-word").addEventListener("submit", (e) => {
   handleSubmit(e);
-  resetBoard();
+  reset();
 });
