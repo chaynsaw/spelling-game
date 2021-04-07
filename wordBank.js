@@ -61,10 +61,26 @@ const generateMessage = () => {
   wordBankSection.appendChild(p);
 };
 
+const removeActiveClasses = () => {
+  const wordbankBtns = document.querySelectorAll(".wordbank-btn");
+  for (let wordbankBtn of wordbankBtns) {
+    wordbankBtn.classList.remove("active");
+  }
+};
+
 const renderNewButton = (word) => {
   const button = document.createElement("button");
+  button.id = word.toLowerCase();
+  button.classList.add("wordbank-btn");
+
+  // initial active button on page load
+  if (word === currentWord) button.classList.add("active");
+
   button.addEventListener("click", (e) => {
     displayWord(e);
+    // remove active classes and set active class for clicked button
+    removeActiveClasses();
+    button.classList.add("active");
     reset();
   });
   button.textContent = word;
