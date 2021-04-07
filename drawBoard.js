@@ -1,17 +1,18 @@
 const drawBoard = () => {
   const canvas = document.getElementById("board");
   const ctx = canvas.getContext("2d");
-  
+
   let y = 40;
 
-  setInterval(() => {
+  const draw = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     if (y < canvas.height) {
-      y += 10;
+      y += 1;
     } else {
       y = 40;
     }
-    drawLetters(12, y)
-  }, 500);
-
+    drawLetters(12, y);
+    window.requestAnimationFrame(draw);
+  };
+  draw();
 };
