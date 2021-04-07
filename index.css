@@ -15,3 +15,36 @@ canvas {
   border: 1px solid #000;
   display: inline-block;
 }
+
+main form {
+  margin: 10px;
+  padding: 5px;
+  text-align: center;
+}
+
+#word-picker {
+  /* display: flex;
+  justify-content: space-between; */
+  max-width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid black;
+}
+
+#word-picker button {
+  margin: 10px;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: bisque;
+}
+
+#word-picker button:hover {
+  cursor: pointer;
+  transition-duration: 500ms;
+  background-color: aquamarine;
+}
+
+#word-picker p {
+  margin-top: 10px;
+  margin-left: 10px;
+}
