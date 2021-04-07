@@ -26,7 +26,8 @@ const isFinishedSpelling = () => {
 const isValidWordBankLetter = (letter) => {
   // check if clicked letter matches correct letter by index
   if (currentWord[currentWordIndex].toLowerCase() === letter) {
-    document.getElementById(`${currentWordIndex}`).style.color = "green";
+    document.getElementById(`${currentWordIndex}`).style.backgroundColor =
+      "azure";
     // increment index after validating correct letter
     currentWordIndex += 1;
     return true;
@@ -56,11 +57,16 @@ const displayWord = (e) => {
 
 const generateRandomIndex = () => Math.floor(Math.random() * wordBank.length);
 
-const generateMessage = () => {
-  const wordBankSection = document.getElementById("word-bank");
-  const p = document.createElement("p");
-  p.textContent = "Congratulations!";
-  wordBankSection.appendChild(p);
+const handleNextWord = () => {
+  document.getElementById("success-message").style.display = "none";
+  let nextWord = wordBank[generateRandomIndex()];
+  while (currentWord === nextWord) {
+    nextWord = wordBank[generateRandomIndex()];
+  }
+  currentWord = nextWord;
+  console.log(currentWord);
+  renderWord();
+  reset();
 };
 
 const renderNewButton = (word) => {
@@ -82,6 +88,8 @@ const renderWordPicker = () => {
   }
 };
 
+const successMessageSection = document.getElementById("success-message");
+const wordBankSection = document.getElementById("word-bank");
 const wordPickerSection = document.getElementById("word-picker");
 let currentWord = wordBank[generateRandomIndex()]; // randomly pick a word from word bank
 renderWord();
@@ -91,3 +99,5 @@ document.getElementById("add-word").addEventListener("submit", (e) => {
   handleSubmit(e);
   reset();
 });
+
+document.getElementById("next-word").addEventListener("click", handleNextWord);
