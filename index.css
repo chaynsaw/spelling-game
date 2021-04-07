@@ -22,6 +22,10 @@ main form {
   text-align: center;
 }
 
+main form input {
+  padding: 5px;
+}
+
 #word-picker {
   max-width: 100%;
   margin-bottom: 20px;
@@ -47,4 +51,26 @@ main form {
   margin-left: 18px;
   font-size: 28px;
   font-weight: bold;
+}
+
+#success-message {
+  display: none;
+  text-align: center;
+  margin-top: 10px;
+}
+
+#success-message p {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#success-message button {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#success-message button:hover {
+  cursor: pointer;
+  transition-duration: 500px;
+  background-color: aquamarine;
 }
