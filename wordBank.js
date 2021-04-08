@@ -7,6 +7,7 @@ let currentWordIndex = 0;
 const reset = () => {
   currentWordIndex = 0;
   resetBoard();
+  removeActiveClasses();
 };
 
 const renderWord = () => {
@@ -46,7 +47,6 @@ const isValidWordBankLetter = (letter) => {
 
 const handleSubmit = (e) => {
   e.preventDefault();
-  removeActiveClasses();
   currentWord = e.target.word.value;
   wordBank.unshift(currentWord);
   renderWord();
@@ -70,6 +70,8 @@ const handleNextWord = () => {
   currentWord = nextWord;
   renderWord();
   reset();
+  const button = document.getElementById(currentWord.toLowerCase());
+  button.classList.add("active");
 };
 
 const removeActiveClasses = () => {
@@ -88,11 +90,10 @@ const renderNewButton = (word) => {
   if (word === currentWord) button.classList.add("active");
 
   button.addEventListener("click", (e) => {
-    displayWord(e);
-    // remove active classes and set active class for clicked button
-    removeActiveClasses();
-    button.classList.add("active");
+    document.getElementById("success-message").style.display = "none";
     reset();
+    displayWord(e);
+    button.classList.add("active");
   });
   button.textContent = word;
   wordPickerSection.appendChild(button);
@@ -107,16 +108,15 @@ const renderWordPicker = () => {
   }
 };
 
-const successMessageSection = document.getElementById("success-message");
-const wordBankSection = document.getElementById("word-bank");
 const wordPickerSection = document.getElementById("word-picker");
 let currentWord = wordBank[generateRandomIndex()]; // randomly pick a word from word bank
+
 renderWord();
 renderWordPicker();
 
 document.getElementById("add-word").addEventListener("submit", (e) => {
-  handleSubmit(e);
   reset();
+  handleSubmit(e);
 });
 
 document.getElementById("next-word").addEventListener("click", handleNextWord);
