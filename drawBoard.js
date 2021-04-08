@@ -78,6 +78,7 @@ const drawBoard = () => {
     });
     if (isFinishedSpelling()) {
       document.getElementById("success-message").style.display = "block";
+      document.getElementById("board").style.display = "none";
       return;
     }
   });
