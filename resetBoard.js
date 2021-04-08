@@ -1,5 +1,10 @@
 const resetBoard = () => {
-  const canvas = document.getElementById("board");
+  // clone board and replace with clone to remove all active listeners
+  const oldCanvas = document.getElementById("board");
+  const canvas = oldCanvas.cloneNode(true);
+  oldCanvas.parentNode.replaceChild(canvas, oldCanvas);
+
+  canvas.style.display = "inline-block";
   const ctx = canvas.getContext("2d");
   var id = window.requestAnimationFrame(function () {});
 
